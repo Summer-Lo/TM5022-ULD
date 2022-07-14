@@ -62,14 +62,14 @@ void loop() {
     
     if (state == 0)                                     // State 0
     {
-        if (locationSensor.read() == 1)             // Check the location sensor
+        if (locationSensor.read() == 1)                 // Check the location sensor
         {
-            timer1 = millis();                      // Get the current time
-            state = 1;                              // Set state = 1
+            timer1 = millis();                          // Get the current time
+            state = 1;                                  // Set state = 1
             Serial.println("Change to State 1!");
         }  
     }
-    else if (state == 1)                               // State 1
+    else if (state == 1)                                // State 1
     {
         // Write your code - Begin
 
