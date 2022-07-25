@@ -1,6 +1,6 @@
 /*
  * Autor: Summer Lo
- * Updated date: 14/07/2022
+ * Updated date: 25/07/2022
  * Description: Design for counting the traveling time between Dispatch Sensor (Physical) 
  * and Loading and Unloading Station Sensor (Physical)
  * GPIO Output read status LOW = 0
@@ -23,6 +23,7 @@ stopper rightStopper(1);
 stopper bottomConveyor(2);
 stopper dispatchCargo(3);
 stopper verticalCargo(4);
+stopper ULDsetup(5);
 
 //GPIO SetUp (Sensor)
 sensor cargoDetector(0);
@@ -33,9 +34,9 @@ sensor resetSensor(4);
 sensor palletDetector(5);
 
 // Timer Setup
-Neotimer t0 = Neotimer(3000);   // 3 second timer
+Neotimer t0 = Neotimer(1600);   // 1.6 second timer
 Neotimer t1 = Neotimer(3000);   // 3 second timer
-Neotimer t2 = Neotimer(5000);   // 5 second timer
+Neotimer t2 = Neotimer(13500);   // 5.3 second timer
 
 void setup() {
     Serial.begin(9600);
@@ -43,11 +44,12 @@ void setup() {
     t2.reset();
 
     // Original Position
-    bottomConveyor.start();
+    bottomConveyor.activate();
     delay(200);
-    dispatchCargo.start();
+    //dispatchCargo.activate();
+    ULDsetup.activate();
     delay(200);
-    verticalCargo.start();
+    verticalCargo.activate();
     delay(200);
 
     Serial.println("Start\n");
@@ -60,11 +62,11 @@ void loop() {
     {
         // put your main code here, to run repeatedly:
         Serial.println("Please input the number to set the state (1 or 2)!");
-        stateInput = Serial.parseInt(); //Read the data the user has input
-        Serial.println("State: "+ stateInput);
+        stateInput = Serial.parseInt();             //Read the data the user has input
         while (Serial.available() == 0) {
             count++;
         }
+        Serial.println("State: "+ stateInput);
       
         switch (stateInput) {
             case 1:
