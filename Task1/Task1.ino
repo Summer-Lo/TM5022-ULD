@@ -1,6 +1,6 @@
 /*
  * Autor: Summer Lo
- * Updated date: 14/07/2022
+ * Updated date: 25/07/2022
  * Description: Design a step squence program for complete the mission
  * 
  * GPIO Output read status LOW = 0 
@@ -31,7 +31,7 @@ sensor palletDetector(5);
 // Timer Setup
 Neotimer t0 = Neotimer(1600);   // 1.6 second timer
 Neotimer t1 = Neotimer(3000);   // 3 second timer
-Neotimer t2 = Neotimer(13500);   // 5.3 second timer
+Neotimer t2 = Neotimer(5000);   // 5 second timer
 
 int state = 0;
 int deliver = 0;
