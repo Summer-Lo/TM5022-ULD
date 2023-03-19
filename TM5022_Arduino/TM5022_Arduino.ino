@@ -11,7 +11,7 @@ stopper leftStopper(0);
 stopper rightStopper(1);
 
 //GPIO SetUp (Sensor)
-sensor stationSensor(0);
+sensor stationSensor(5);
 sensor statusButton(1);
 
 // Timer Setup

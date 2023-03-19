@@ -5,9 +5,18 @@
 
 #include <Arduino.h>
 
-#define SENSOR_PIN A2
-#define END_PIN 2
-
+//#define FRONT_SENSOR_PIN 5
+//#define LOADING_UNLOADING_SENSOR_PIN 4
+//#define END_OPERATION_PIN 3
+//#define DISPATCH_SENSOR_PIN 2
+//#define RESET_SENSOR_PIN A2
+//#define VREP_LOADING_UNLOADING_SENSOR_PIN A3
+#define LOCATION_SENSOR_PIN 5
+#define CARGO_DETECTOR_PIN 4
+#define END_OPERATION_PIN 3     // project (node-red)
+#define HOME_SENSOR_PIN 2
+#define RESET_SENSOR_PIN A2
+#define PALLET_DETECTOR_PIN A3  //project
 class sensor
 {
     public:
