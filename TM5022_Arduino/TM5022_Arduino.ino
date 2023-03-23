@@ -11,7 +11,7 @@ stopper leftStopper(0);
 stopper rightStopper(1);
 
 //GPIO SetUp (Sensor)
-sensor stationSensor(5);
+sensor palletDetector(5);
 sensor statusButton(1);
 
 // Timer Setup
@@ -20,9 +20,6 @@ Neotimer t1 = Neotimer(3000);   // 3 second timer
 Neotimer t2 = Neotimer(5000);   // 5 second timer
 
 int state = 0;
-int deliver = 0;
-char message;
-char store;
 
 void setup() {
   Serial.begin(9600);
@@ -40,13 +37,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-
-  if (Serial.read() == 's')
-  {
-    deliver = 1;            // 1 = ready to mailing process
-    // Serial.print("Ready for collection!\n");
-    // Serial.print("Signal received\n");
-  }
   
   if (state == 0)                                         // Open all stopper and start and wait for node-red 's' response
   {
@@ -58,7 +48,6 @@ void loop() {
      {
        state = 1;
        Serial.print("Change to State 1\n");
-       deliver=1;
     }
   }
 }
